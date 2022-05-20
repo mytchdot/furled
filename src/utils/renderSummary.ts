@@ -1,5 +1,5 @@
-import * as path from 'node:path';
-import { Buffer } from 'node:buffer'; /* https://nodejs.org/api/buffer.html#buffer */
+import * as path from 'path';
+import { Buffer } from 'buffer'; /* https://nodejs.org/api/buffer.html#buffer */
 
 import { sizeWithBuffer } from '.';
 

@@ -1,6 +1,6 @@
-import * as path from "node:path";
+import * as path from 'path';
 
-import type { FolderSizeOptions, FolderSizeReturnType } from "../types";
+import type { FolderSizeOptions, FolderSizeReturnType } from '../types';
 
 const mockfs = {
   lstat: () =>
@@ -19,7 +19,7 @@ const processItem = async (
   const fileSizes = new Map();
   const errors: string[] = [];
 
-  const fs = options.fs || (await import("fs/promises"));
+  const fs = options.fs || (await import('fs/promises'));
 
   if (options.ignore?.test(itemPath)) return { errors, fileSizes };
 
@@ -27,7 +27,7 @@ const processItem = async (
     ? await fs.lstat(itemPath)
     : await fs.lstat(itemPath).catch((error) => errors.push(error));
 
-  if (typeof stats !== "object") return { errors, fileSizes };
+  if (typeof stats !== 'object') return { errors, fileSizes };
 
   fileSizes.set(stats.ino, stats.size);
 
@@ -36,7 +36,7 @@ const processItem = async (
       ? await fs.readdir(itemPath)
       : await fs.readdir(itemPath).catch((error) => errors.push(error));
 
-    if (typeof directoryItems !== "object") return { errors, fileSizes };
+    if (typeof directoryItems !== 'object') return { errors, fileSizes };
 
     await Promise.all(
       directoryItems.map((directoryItem) =>
@@ -50,7 +50,7 @@ const processItem = async (
 const defaults = {
   options: {
     fs: mockfs,
-    ignore: new RegExp(""),
+    ignore: new RegExp(''),
   },
   returnType: {
     strict: false,

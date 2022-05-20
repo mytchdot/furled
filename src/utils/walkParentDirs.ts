@@ -1,14 +1,14 @@
-import * as fs from "node:fs";
-import * as path from "node:path";
+import * as fs from 'fs';
+import * as path from 'path';
 
-import type { WalkParentDirs } from "../types";
+import type { WalkParentDirs } from '../types';
 
 export const walkParentDirs: WalkParentDirs = async ({
   base,
   start,
   filename,
 }) => {
-  let parent = "";
+  let parent = '';
 
   for (let current = start; base.length <= current.length; current = parent) {
     const fullPath = path.join(current, filename);

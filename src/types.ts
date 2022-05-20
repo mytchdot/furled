@@ -1,5 +1,5 @@
-import type { PathLike } from 'node:fs';
-import type { ChildProcess } from 'node:child_process';
+import type { PathLike } from 'fs';
+import type { ChildProcess } from 'child_process';
 
 import type { MinifyOutput } from 'terser';
 import type { CompilerOptions } from 'typescript';
