@@ -4,12 +4,12 @@
   "version": "0.0.21",
   "repository": "mytchmason/furled",
   "license": "MIT",
-  "main": "./dist/src/index.js",
+  "main": "./dist/index.js",
   "bin": {
-    "furl": "./dist/src/cli.js"
+    "furl": "./dist/cli.js"
   },
   "files": [
-    "dist/src"
+    "dist"
   ],
   "devDependencies": {
     "@types/glob": "^7.2.0",
