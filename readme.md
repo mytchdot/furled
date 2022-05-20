@@ -150,3 +150,9 @@ When `watch: true` is set, the build object is not a promise, but has the follow
   void close ();
 }
 ```
+
+## Attributions
+
+Made for [furlify](https://github.com/mytchmason/furlify)
+
+This project was heavily influenced by vecel's ncc
