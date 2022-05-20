@@ -1,11 +1,9 @@
-import * as path from "node:path";
-import { Buffer } from "node:buffer"; /* https://nodejs.org/api/buffer.html#buffer */
+import * as path from 'node:path';
+import { Buffer } from 'node:buffer'; /* https://nodejs.org/api/buffer.html#buffer */
 
-import { sizeWithBuffer } from ".";
+import { sizeWithBuffer } from '.';
 
-import { version } from "../../package.json";
-
-import type { RenderSummary } from "../types";
+import type { RenderSummary } from '../types';
 
 export const renderSummary: RenderSummary = ({
   map,
@@ -29,7 +27,7 @@ export const renderSummary: RenderSummary = ({
   for (const asset of Object.keys(assets)) {
     const assetSource = assets[asset].source;
     const assetSize = Math.round(
-      (assetSource.byteLength || Buffer.byteLength(assetSource, "utf8")) / 1024
+      (assetSource.byteLength || Buffer.byteLength(assetSource, 'utf8')) / 1024
     );
     assetSizes[asset] = assetSize;
     totalSize += assetSize;
@@ -44,40 +42,40 @@ export const renderSummary: RenderSummary = ({
 
   let indexRender: string | null = `${codeSize
     .toString()
-    .padStart(sizePadding, " ")}kB  ${outDir}index${ext}`;
+    .padStart(sizePadding, ' ')}kB  ${outDir}index${ext}`;
 
   let indexMapRender: string | null = map
     ? `${mapSize
         .toString()
-        .padStart(sizePadding, " ")}kB  ${outDir}index${ext}.map`
-    : "";
+        .padStart(sizePadding, ' ')}kB  ${outDir}index${ext}.map`
+    : '';
 
-  let output = "";
+  let output = '';
   let first = true;
 
   for (const asset of orderedAssets) {
     if (first) first = false;
-    else output += "\n";
+    else output += '\n';
     if (codeSize < assetSizes[asset] && indexRender) {
-      output += indexRender + "\n";
+      output += indexRender + '\n';
       indexRender = null;
     }
     if (mapSize && mapSize < assetSizes[asset] && indexMapRender) {
-      output += indexMapRender + "\n";
+      output += indexMapRender + '\n';
       indexMapRender = null;
     }
     output += `${assetSizes[asset]
       .toString()
-      .padStart(sizePadding, " ")}kB  ${outDir}${asset}`;
+      .padStart(sizePadding, ' ')}kB  ${outDir}${asset}`;
   }
 
   if (indexRender) {
-    output += (first ? "" : "\n") + indexRender;
+    output += (first ? '' : '\n') + indexRender;
     first = false;
   }
-  if (indexMapRender) output += (first ? "" : "\n") + indexMapRender;
+  if (indexMapRender) output += (first ? '' : '\n') + indexMapRender;
 
-  output += `\n${totalSize}kB  [${buildTime}ms] - furlify ${version}`;
+  output += `\n${totalSize}kB  [${buildTime}ms] - furlify`;
 
   return output;
 };

@@ -1,7 +1,7 @@
 {
-  "name": "@mytchmason/furled",
+  "name": "furled",
   "description": "very low config module bundler",
-  "version": "0.0.1",
+  "version": "0.0.21",
   "repository": "mytchmason/furled",
   "license": "MIT",
   "main": "./dist/src/index.js",

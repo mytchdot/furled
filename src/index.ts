@@ -24,7 +24,6 @@ import {
   generateExternalMap,
 } from './utils';
 
-import { version } from '../package.json';
 import {
   SHEBANG_REGEX,
   DEFAULT_PERMISSIONS,
@@ -104,11 +103,6 @@ const furled: Bundler = async (
 
   // Not currently supported for ESM
   if (esm) v8cache = false;
-
-  if (!quiet) {
-    Logs.meta.version(version);
-    Logs.starting(filename, Boolean(esm));
-  }
 
   if (
     target &&
