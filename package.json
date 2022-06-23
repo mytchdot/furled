@@ -3,7 +3,7 @@
   "description": "very low config module bundler",
   "version": "0.0.4",
   "repository": "mytchmason/furled",
-  "license": "MIT",
+  "license": "GNU",
   "main": "./dist/index.js",
   "bin": {
     "furl": "./dist/cli.js"
