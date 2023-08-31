@@ -144,13 +144,20 @@ const furled: Bundler = async (
     if (fullTsconfig.compilerOptions.allowJs) {
       tsconfigPathsOptions.extensions = SUPPORTED_EXTENSIONS;
     }
-    resolvePlugins.push(new TsconfigPathsWebpackPlugin(tsconfigPathsOptions));
+    resolvePlugins.push(
+      new TsconfigPathsWebpackPlugin(
+        tsconfigPathsOptions
+      ) as webpack.ResolvePluginInstance
+    );
   } catch (e) {}
 
   const pluginObject: webpack.ResolvePluginInstance = {
     apply(resolver) {
       const resolve = resolver.resolve;
-      resolver.resolve = resolverResolve(resolve, externalMap);
+      resolver.resolve = resolverResolve(
+        resolve,
+        externalMap
+      ) as webpack.Resolver['resolve'];
     },
   };
   resolvePlugins.push(pluginObject);
